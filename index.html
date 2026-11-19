@@ -192,10 +192,40 @@ footer h2{font-size:1rem;margin-bottom:10px;color:var(--ink)}
 footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
 .progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--loss);z-index:20;margin-top:env(safe-area-inset-top,0px)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- 圖片（AI 生成示意） ---------- */
+.hero-bg{position:relative;width:100vw;margin-left:calc(50% - 50vw);padding-inline:var(--gutter-l) var(--gutter-r);
+  background:#0b0f13;color:#eef1f3;isolation:isolate;overflow:hidden;
+  --ink:#eef1f3;--muted:#c3cbd1;--line:rgba(255,255,255,.22);--ghost:#56626c}
+.hero-bg .hero-img{position:absolute;top:0;left:0;width:112%;height:112%;transform-origin:0 0;object-fit:cover;object-position:70% center;z-index:-2;
+  filter:grayscale(1) contrast(1.1);animation:heroZoom 24s ease-out both}
+.hero-bg::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(11,15,19,.92) 0%,rgba(11,15,19,.7) 45%,rgba(11,15,19,.15) 100%),
+             linear-gradient(0deg,rgba(11,15,19,.95) 0%,rgba(11,15,19,0) 35%)}
+.hero-bg .hero{min-height:min(100svh,980px);align-content:end;padding-bottom:48px}
+.hero-bg .hero .kicker{color:var(--band-accent,#f2b52e)}
+.hero-bg .hero h1{text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.hero-credit{position:absolute;right:var(--gutter-r);bottom:10px;margin:0;font-size:.7rem;color:#8d98a1;letter-spacing:.05em}
+@keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.hero-bg .hero-img{animation:none}}
+
+.ch-photo{position:relative;width:100vw;margin:0 0 48px calc(50% - 50vw);aspect-ratio:21/9;max-height:72vh;overflow:hidden;background:#0b0f13}
+.ch-photo[hidden]{display:none}
+.ch-photo img{width:112%;height:112%;transform-origin:0 0;object-fit:cover;object-position:40% 40%;display:block;filter:grayscale(1) contrast(1.08);
+  transform:scale(1.06);transition:transform 1.6s ease-out,opacity 1.2s ease-out;opacity:.0}
+.ch-photo.in img{transform:scale(1);opacity:1}
+.ch-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,var(--bg) 0%,transparent 28%),linear-gradient(180deg,var(--bg) 0%,transparent 18%)}
+.ch-photo figcaption{position:absolute;left:max(16px,calc(50vw - 590px));bottom:14px;z-index:1;font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+.ch-photo.lamp img{filter:grayscale(1) sepia(.55) saturate(1.6) hue-rotate(-8deg) contrast(1.08)}
+@media (max-width:720px){.ch-photo{aspect-ratio:4/3}}
+@media (prefers-reduced-motion:reduce){.ch-photo img{transition:none;transform:none;opacity:1}}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
 
+<div class="hero-bg">
+<img class="hero-img" src="img/hero.jpg" alt="" aria-hidden="true">
 <header class="wrap hero">
   <div class="kicker">深度報導｜台灣流浪動物</div>
   <h1>誰在山裡<br>追石虎</h1>
@@ -203,6 +233,8 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
   <div class="hero-dots" aria-hidden="true" id="heroDots"></div>
   <div class="byline"><span>數據至 2026 年</span><span>閱讀時間約 10 分鐘</span><span>向下捲動開始閱讀</span></div>
 </header>
+<p class="hero-credit">圖：AI 生成示意圖（Pollinations / FLUX），非真實拍攝</p>
+</div>
 
 <!-- ===== 一、石虎之死 → 放大到所有野生動物 ===== -->
 <section class="chapter wrap" id="wild">
@@ -210,6 +242,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
     <div class="kicker">第一章｜問題</div>
     <h2>石虎是怎麼死的</h2>
   </div>
+  <figure class="ch-photo"><img src="img/ch1-wild.jpg" alt="夜間紅外線相機畫面風格：一群遊蕩犬穿過淺山竹林" loading="lazy"><figcaption>AI 生成示意圖，非真實拍攝</figcaption></figure>
   <div class="prose"><p class="drop">石虎是台灣唯一僅存的原生貓科動物，被列為第一級瀕臨絕種保育類。農業部生物多樣性研究所從 2019 年起，替救傷後野放的石虎戴上發報器，一隻一隻追蹤牠們的下落。</p></div>
 
   <div class="scrolly" data-scrolly="wild">
@@ -237,6 +270,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
     <div class="kicker">第二章｜關聯</div>
     <h2>同一段時間，街上的狗也變多了</h2>
   </div>
+  <figure class="ch-photo lamp"><img src="img/ch2-road.jpg" alt="路燈下的山區道路，幾隻遊蕩犬躺在柏油路上" loading="lazy"><figcaption>AI 生成示意圖，非真實拍攝</figcaption></figure>
   <div class="prose"><p>2017 年，是一條反覆出現的分界線。把石虎的死亡通報，和全國遊蕩犬的推估數放在同一條時間軸上。</p></div>
 
   <div class="scrolly" data-scrolly="trend">
@@ -262,6 +296,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
     <div class="kicker">第三章｜原因</div>
     <h2>狗為什麼變多</h2>
   </div>
+  <figure class="ch-photo"><img src="img/ch3-feed.jpg" alt="山腳路邊小廟旁的一碗飼料，狗群在後方聚集" loading="lazy"><figcaption>AI 生成示意圖，非真實拍攝</figcaption></figure>
   <div class="prose"><p>目前沒有一份研究能把遊蕩犬增加的原因一次說清楚。下面是政府統計、動保團體的長期資料和學術調查各自指向的因素，強度不一，我們一一標出來源類型。</p></div>
 
   <div class="scrolly" data-scrolly="why">
@@ -290,6 +325,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
     <div class="kicker">第四章｜收容</div>
     <h2>籠子沒有變多</h2>
   </div>
+  <figure class="ch-photo"><img src="img/ch4-shelter.jpg" alt="收容所長廊與一排排鐵籠，一隻狗把鼻子貼在欄杆上" loading="lazy"><figcaption>AI 生成示意圖，非真實拍攝</figcaption></figure>
   <div class="prose"><p>零撲殺拿掉了收容所的出口，籠舍卻沒有跟著增加。狗待得越來越久，一格一格被填滿。</p></div>
 
   <div class="scrolly" data-scrolly="shelter">
@@ -356,6 +392,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
   <div class="chapter-head" style="text-align:center">
     <div class="kicker">第六章｜我們</div>
   </div>
+  <figure class="ch-photo lamp"><img src="img/ch6-love.jpg" alt="清晨的山徑上，一隻手牽著繫好牽繩的狗" loading="lazy"><figcaption>AI 生成示意圖，非真實拍攝</figcaption></figure>
   <p class="q">我們的愛心，<br>是不是<em>害死了石虎</em>？</p>
   <div class="prose">
     <p>餵狗的人多半出於善意。但一碗沒有配套的飼料，會讓狗活得更久、生得更多，聚成狗群。當這群狗住在淺山，石虎、穿山甲、山羌就在牠們的活動範圍裡。</p>
@@ -632,4 +669,11 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
   new MutationObserver(rerender).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>wildStage.kick());
 })();
+</script>
+<script>
+(()=>{const figs=document.querySelectorAll('.ch-photo');
+  figs.forEach(f=>{const i=f.querySelector('img');i.addEventListener('error',()=>{f.hidden=true});if(i.complete&&!i.naturalWidth&&i.src)f.hidden=true});
+  if(!('IntersectionObserver' in window)){figs.forEach(f=>f.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2});
+  figs.forEach(f=>io.observe(f));})();
 </script>
