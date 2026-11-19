@@ -32,7 +32,7 @@
 
 *{box-sizing:border-box}
 html,body{overflow-x:clip}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:clamp(1.02rem,1rem + .2vw,1.12rem);line-height:1.9;
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:clamp(1.02rem,1rem + .2vw,1.12rem);line-height:1.9;
   padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 a{color:inherit;text-decoration-color:var(--lamp);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:3px solid var(--lamp);outline-offset:3px}
@@ -181,7 +181,7 @@ svg.show-mark .mark,svg.show-mark .mark-t{opacity:1}
 
 /* 結論 */
 .q{font-family:var(--font-display);font-weight:900;font-size:clamp(2.2rem,1.3rem + 4.5vw,5rem);line-height:1.2;max-width:12em;margin:0 auto 40px;text-align:center;text-wrap:balance}
-.q em{font-style:normal;color:var(--loss)}
+.q em{font-style:normal;color:var(--loss);white-space:nowrap}
 .evid{max-width:44em;margin:0 auto 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13em),1fr));gap:22px}
 .evid div{border-top:2px solid var(--ink);padding-top:10px;display:grid;gap:4px}
 .evid b{font-family:var(--font-data);font-size:1.9rem;line-height:1.1;color:var(--loss);font-weight:500}
@@ -199,7 +199,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 /* ---------- 圖片（AI 生成示意） ---------- */
-.hero-bg{position:relative;width:100vw;margin-left:calc(50% - 50vw);padding-inline:var(--gutter-l) var(--gutter-r);
+.hero-bg{position:relative;margin-inline:calc(-1 * var(--gutter-l)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter-l) var(--gutter-r);
   background:#0b0f13;color:#eef1f3;isolation:isolate;overflow:hidden;
   --ink:#eef1f3;--muted:#c3cbd1;--line:rgba(255,255,255,.22);--ghost:#56626c}
 .hero-bg .hero-img{position:absolute;top:0;left:0;width:112%;height:112%;transform-origin:0 0;object-fit:cover;object-position:70% center;z-index:-2;
@@ -214,7 +214,7 @@ footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
 @keyframes heroZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.hero-bg .hero-img{animation:none}}
 
-.ch-photo{position:relative;width:100vw;margin:0 0 48px calc(50% - 50vw);aspect-ratio:21/9;max-height:72vh;overflow:hidden;background:#0b0f13}
+.ch-photo{position:relative;width:100vw;width:100dvw;margin:0 0 48px calc(50% - 50vw);margin-left:calc(50% - 50dvw);aspect-ratio:21/9;max-height:72vh;overflow:hidden;background:#0b0f13}
 .ch-photo[hidden]{display:none}
 .ch-photo img{width:112%;height:112%;transform-origin:0 0;object-fit:cover;object-position:40% 40%;display:block;filter:grayscale(1) contrast(1.08);
   transform:scale(1.06);transition:transform 1.6s ease-out,opacity 1.2s ease-out;opacity:.0}
