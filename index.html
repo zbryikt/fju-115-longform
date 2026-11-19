@@ -1,0 +1,635 @@
+<title>誰在山裡追石虎</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="台灣流浪動物議題深度報導：從石虎之死，追到遊蕩犬、收容所、政策與我們的愛心。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 淺山夜色與柏油路的報導——左文右圖的黏著圖表推進；手機上圖表黏頂、文字卡從其上滑過；轉場用反白滿版色帶 */
+:root{
+  --bg:#e9ecee;--surface:#f7f8f8;--ink:#16202a;--muted:#58636d;--line:#c9cfd3;
+  --lamp:#c98a00;--loss:#b83a2e;--ghost:#a3adb5;--other:#6f7d89;
+  --band-bg:#16202a;--band-fg:#eef1f3;--band-accent:#f2b52e;
+  --font-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --font-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --font-data:"IBM Plex Mono",ui-monospace,"Consolas",monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f151b;--surface:#18212a;--ink:#e3e7ea;--muted:#9aa5ae;--line:#2b3742;
+  --lamp:#f2b52e;--loss:#e8604f;--ghost:#4a5763;--other:#7f8d99;
+  --band-bg:#e9ecee;--band-fg:#16202a;--band-accent:#b83a2e;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f151b;--surface:#18212a;--ink:#e3e7ea;--muted:#9aa5ae;--line:#2b3742;
+  --lamp:#f2b52e;--loss:#e8604f;--ghost:#4a5763;--other:#7f8d99;
+  --band-bg:#e9ecee;--band-fg:#16202a;--band-accent:#b83a2e;color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:clamp(1.02rem,1rem + .2vw,1.12rem);line-height:1.9;
+  padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+a{color:inherit;text-decoration-color:var(--lamp);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--lamp);outline-offset:3px}
+.wrap{max-width:1180px;margin-inline:auto}
+.prose{max-width:34em;margin-inline:auto}
+.prose p{margin:0 0 1.2em}
+.mono{font-family:var(--font-data);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.25;margin:0}
+.kicker{font-size:.78rem;letter-spacing:.2em;color:var(--muted);font-weight:700}
+.hl{color:var(--loss);font-weight:700}
+.hl-lamp{color:var(--lamp);font-weight:700}
+
+/* ---------- 開場 ---------- */
+.hero{padding-block:clamp(48px,9vh,110px) 32px;display:grid;gap:24px}
+.hero .kicker{color:var(--loss)}
+.hero h1{font-weight:900;font-size:clamp(2.8rem,1.5rem + 6.5vw,7rem);line-height:1.08}
+.hero .dek{max-width:31em;font-size:clamp(1.08rem,1rem + .5vw,1.32rem);color:var(--muted);margin:0}
+.hero .byline{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;display:flex;flex-wrap:wrap;gap:6px 24px}
+.hero-dots{display:flex;flex-wrap:wrap;gap:7px;max-width:560px}
+.hero-dots i{width:14px;height:14px;border-radius:50%;background:var(--lamp)}
+.hero-dots i.d{background:var(--ghost)}
+.hero-dots i.k{background:var(--loss)}
+
+section.chapter{padding-block:clamp(56px,10vh,110px)}
+.chapter-head{max-width:34em;margin:0 auto 32px;display:grid;gap:10px}
+.chapter-head h2{font-size:clamp(1.8rem,1.3rem + 2vw,2.8rem);font-weight:900}
+.drop::first-letter{font-family:var(--font-display);font-weight:900;float:left;font-size:3.3em;line-height:.9;margin:.08em .12em 0 0;color:var(--loss)}
+
+/* ---------- 捲動敘事 ---------- */
+.scrolly{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;position:relative}
+.scrolly .graphic{position:sticky;top:calc(env(safe-area-inset-top,0px) + 5vh);height:90vh;order:2;display:flex;align-items:center;justify-content:center;min-width:0}
+.scrolly .steps{order:1;padding-block:30vh 40vh;display:grid;gap:60vh;min-width:0}
+.step{background:var(--surface);border:1px solid var(--line);padding:20px 22px;border-radius:4px;opacity:.45;transition:opacity .4s,border-color .4s}
+.step.is-active{opacity:1;border-color:var(--ink)}
+.step p{margin:0}
+.step p+p{margin-top:.7em}
+.step .tag{display:inline-block;font-size:.72rem;letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);padding:0 8px;border-radius:99px;margin-bottom:8px}
+@media (max-width:820px){
+  .scrolly{grid-template-columns:minmax(0,1fr);gap:0}
+  .scrolly .graphic{order:1;top:env(safe-area-inset-top,0px);height:64vh;z-index:0}
+  .scrolly .steps{order:2;position:relative;z-index:1;margin-top:-28vh;padding-block:12vh 50vh;gap:72vh}
+  .step{opacity:.97;box-shadow:0 8px 24px rgb(0 0 0 / .14)}
+}
+
+/* 點陣舞台 */
+.stage{width:100%;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:8px}
+.stage canvas{width:100%;height:100%;display:block}
+.stage-title{font-size:.85rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:6px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stage-title b{color:var(--ink);font-weight:700}
+.stage-note{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* 折線圖 */
+.chart{width:100%;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:8px}
+.chart svg{width:100%;height:100%;display:block;overflow:visible}
+.ax{stroke:var(--line);stroke-width:1}
+.ax-t{fill:var(--muted);font-family:var(--font-data);font-size:15px}
+.ax-l{fill:var(--muted);font-family:var(--font-body);font-size:15px}
+.ln{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s ease}
+.pt{fill:var(--ink);opacity:0;transition:opacity .4s .6s}
+.pt-t{fill:var(--ink);font-family:var(--font-data);font-size:15px;opacity:0;transition:opacity .4s .8s}
+.br{fill:var(--other);transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .7s ease}
+.br.k{fill:var(--loss)}
+.br-t{fill:var(--ink);font-family:var(--font-data);font-size:15px;opacity:0;transition:opacity .4s .5s}
+.br-t.k{fill:var(--loss)}
+.fade{opacity:0;transition:opacity .5s}
+.hlband{fill:var(--loss);opacity:0;transition:opacity .5s}
+.mark{stroke:var(--loss);stroke-width:2;stroke-dasharray:5 5;opacity:0;transition:opacity .5s}
+.mark-t{fill:var(--loss);font-family:var(--font-body);font-size:15px;font-weight:700;opacity:0;transition:opacity .5s}
+/* 步驟狀態 */
+svg.show-top .ln{stroke-dashoffset:0}
+svg.show-top .pt,svg.show-top .pt-t{opacity:1}
+svg.show-bottom .br{transform:scaleY(1)}
+svg.show-bottom .br-t,svg.show-bottom .fade{opacity:1}
+svg.show-hl .hlband{opacity:.1}
+svg.show-mark .mark,svg.show-mark .mark-t{opacity:1}
+
+/* 歸因面板 */
+.why{width:100%;height:100%;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px}
+.why .chart{height:auto}
+.why svg{height:auto;max-height:34vh}
+.cause{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:16px 18px;min-height:15.5em;display:grid;gap:10px;align-content:start}
+.cause .ct{font-family:var(--font-display);font-weight:900;font-size:1.15rem;line-height:1.35}
+.cause .cs{font-size:.78rem;color:var(--muted)}
+.cause.enter{animation:rise .45s ease}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stack{display:flex;height:34px;border-radius:2px;overflow:hidden}
+.stack span{display:flex;align-items:center;justify-content:center;font-family:var(--font-data);font-size:.8rem;color:var(--band-fg);white-space:nowrap;overflow:hidden}
+.stack-legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.82rem}
+.stack-legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:middle;border-radius:2px}
+.hb{display:grid;grid-template-columns:6.4em minmax(0,1fr) auto;gap:6px 10px;align-items:center;font-size:.85rem}
+.hb .val{font-family:var(--font-data);font-size:.8rem;text-align:right;white-space:nowrap}
+.hb .tr{height:22px;position:relative;background:color-mix(in srgb,var(--line) 45%,transparent);border-radius:2px}
+.hb .fl{position:absolute;inset:0 auto 0 0;background:var(--ink);border-radius:2px}
+.hb .fl.k{background:var(--loss)}
+.hb .fl.l{background:var(--lamp)}
+.hb .v{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:var(--font-data);font-size:.78rem;color:var(--ink)}
+.hb .th{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--loss)}
+.more{display:inline-flex;gap:8px;align-items:center;font-weight:700;border:1.5px solid var(--ink);padding:6px 14px;border-radius:99px;text-decoration:none;font-size:.95rem}
+
+/* 收容所計數器 */
+.counter{container-type:inline-size;width:min(100%,460px);display:grid;gap:12px;text-align:center}
+.counter .big{font-family:var(--font-data);font-size:21cqi;line-height:1.05;color:var(--ink);transition:color .4s;white-space:nowrap}
+.counter .big.warn{color:var(--loss)}
+.counter .big.lamp{color:var(--lamp)}
+.counter .unit{font-family:var(--font-display);font-size:1.4rem;font-weight:900;line-height:1.2}
+.counter .cap{color:var(--muted);font-size:.95rem;min-height:3.2em}
+.cage{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
+.cage span{aspect-ratio:1;border:1.5px solid var(--line);border-radius:2px;transition:background .5s,border-color .5s}
+.cage span.on{background:var(--lamp);border-color:var(--lamp)}
+.cage span.full{background:var(--loss);border-color:var(--loss)}
+
+/* 轉場色帶 */
+.band{margin-inline:calc(50% - 50vw);background:var(--band-bg);color:var(--band-fg);
+  padding-left:var(--gutter-l);padding-right:var(--gutter-r);padding-block:clamp(80px,18vh,180px)}
+.band .inner{max-width:1180px;margin-inline:auto;display:grid;gap:28px}
+.band .kicker{color:var(--band-accent)}
+.band h2{font-size:clamp(2.6rem,1.5rem + 6vw,6.5rem);font-weight:900;line-height:1.1}
+.band h2 em{font-style:normal;color:var(--band-accent)}
+.band p{max-width:30em;font-size:clamp(1.05rem,1rem + .4vw,1.3rem);margin:0;opacity:.9}
+.band .huge{font-family:var(--font-data);font-size:clamp(4rem,2rem + 12vw,12rem);line-height:1;color:var(--band-accent)}
+.band .huge small{font-family:var(--font-display);font-size:.3em;font-weight:900;color:var(--band-fg);margin-left:.2em}
+
+/* 縣市占用率 */
+.occ{max-width:44em;margin:28px auto 0;display:grid;gap:6px}
+.occ .row{display:grid;grid-template-columns:4.6em minmax(0,1fr) 3.4em;gap:10px;align-items:center;font-size:.88rem}
+.occ .tr{height:16px;position:relative}
+.occ .fl{position:absolute;inset:0 auto 0 0;background:var(--other);border-radius:0 2px 2px 0}
+.occ .row.over .fl{background:var(--loss)}
+.occ .row.over{font-weight:700;color:var(--loss)}
+.occ .row.nat .fl{background:var(--ink)}
+.occ .row.nat{font-weight:700}
+.occ .line100{position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px dashed var(--ink)}
+.occ .v{font-family:var(--font-data);text-align:right}
+.chart-note{max-width:44em;margin:10px auto 0;font-size:.8rem;color:var(--muted)}
+
+/* 時間軸 */
+.timeline{max-width:42em;margin:0 auto;list-style:none;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 32px 28px;display:grid;gap:4px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--ink)}
+.timeline li.key::before{background:var(--loss);border-color:var(--loss)}
+.timeline time{font-family:var(--font-data);color:var(--muted);font-size:.95rem}
+.timeline li.key time{color:var(--loss)}
+.timeline h3{font-size:1.18rem;font-weight:900}
+.timeline p{margin:0;color:var(--muted)}
+.timeline .gap{font-size:.85rem;color:var(--loss);font-weight:700}
+
+/* 結論 */
+.q{font-family:var(--font-display);font-weight:900;font-size:clamp(2.2rem,1.3rem + 4.5vw,5rem);line-height:1.2;max-width:12em;margin:0 auto 40px;text-align:center;text-wrap:balance}
+.q em{font-style:normal;color:var(--loss)}
+.evid{max-width:44em;margin:0 auto 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13em),1fr));gap:22px}
+.evid div{border-top:2px solid var(--ink);padding-top:10px;display:grid;gap:4px}
+.evid b{font-family:var(--font-data);font-size:1.9rem;line-height:1.1;color:var(--loss);font-weight:500}
+.evid span{font-size:.92rem;color:var(--muted);line-height:1.6}
+.acts{max-width:44em;margin:28px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17em),1fr));gap:18px}
+.act{border-top:3px solid var(--lamp);padding-top:12px}
+.act h3{font-size:1.1rem;font-weight:900;margin-bottom:4px}
+.act p{margin:0;color:var(--muted);font-size:.98rem}
+
+footer{border-top:1px solid var(--line);padding-block:40px 64px;margin-top:40px}
+footer .prose{font-size:.85rem;color:var(--muted);line-height:1.8}
+footer h2{font-size:1rem;margin-bottom:10px;color:var(--ink)}
+footer ol{padding-left:1.3em;margin:0;display:grid;gap:6px}
+.progress{position:fixed;left:0;top:0;height:3px;width:0;background:var(--loss);z-index:20;margin-top:env(safe-area-inset-top,0px)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="wrap hero">
+  <div class="kicker">深度報導｜台灣流浪動物</div>
+  <h1>誰在山裡<br>追石虎</h1>
+  <p class="dek">研究團隊追蹤的 55 隻石虎，已經死了 33 隻。其中 14 隻，是被狗咬死的。順著這些狗往回追，會追到收容所、追到政策，最後追到我們自己。</p>
+  <div class="hero-dots" aria-hidden="true" id="heroDots"></div>
+  <div class="byline"><span>數據至 2026 年</span><span>閱讀時間約 10 分鐘</span><span>向下捲動開始閱讀</span></div>
+</header>
+
+<!-- ===== 一、石虎之死 → 放大到所有野生動物 ===== -->
+<section class="chapter wrap" id="wild">
+  <div class="chapter-head">
+    <div class="kicker">第一章｜問題</div>
+    <h2>石虎是怎麼死的</h2>
+  </div>
+  <div class="prose"><p class="drop">石虎是台灣唯一僅存的原生貓科動物，被列為第一級瀕臨絕種保育類。農業部生物多樣性研究所從 2019 年起，替救傷後野放的石虎戴上發報器，一隻一隻追蹤牠們的下落。</p></div>
+
+  <div class="scrolly" data-scrolly="wild">
+    <div class="graphic">
+      <div class="stage">
+        <div class="stage-title"><b id="wildTitle">生多所追蹤的石虎</b><span id="wildSrc">2019 – 2026.04</span></div>
+        <canvas id="wildCanvas" role="img" aria-label="點陣圖：石虎追蹤個體的存活與死因，以及遭犬攻擊的野生動物救傷紀錄"></canvas>
+        <div class="stage-note" id="wildNote">每一個點是一隻動物。</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step" data-step="0"><p>這是被追蹤的 <b class="mono">55</b> 隻石虎。</p></div>
+      <div class="step" data-step="1"><p>到 2026 年 4 月，<b class="hl">33 隻已經死亡</b>，只剩 22 隻還活著。</p></div>
+      <div class="step" data-step="2"><p>死因包括路殺、獸鋏、毒餌、殺鼠劑。但比例最高的單一死因是狗：<b class="hl">14 隻死於犬隻或疑似犬隻攻擊，佔死亡的 42%</b>。</p><p>研究者提醒，狗咬多發生在不易被發現的地方，實際數字可能更高。</p></div>
+      <div class="step" data-step="3"><p>石虎只是其中一種。把鏡頭拉遠，看全台野生動物急救站 33 年的紀錄：</p><p><b class="hl">425 隻</b>野生動物因為被狗攻擊而送救傷，這還不包括送醫前就死掉的。</p></div>
+      <div class="step" data-step="4"><p>被狗咬傷最多的是<b class="hl">穿山甲，228 隻</b>，超過一半。接著是山羌 51 隻、白鼻心 25 隻。</p></div>
+      <div class="step" data-step="5"><p>再依時間切開。1993 到 2017 年的 25 年間是 141 隻，<b class="hl">2018 年之後的 8 年就有 284 隻</b>。</p><p>平均每年從 <span class="mono">5.6</span> 隻跳到 <span class="mono hl">35.5</span> 隻，多了六倍。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 二、石虎死亡與遊蕩犬的同一段時間 ===== -->
+<section class="chapter wrap" id="trend">
+  <div class="chapter-head">
+    <div class="kicker">第二章｜關聯</div>
+    <h2>同一段時間，街上的狗也變多了</h2>
+  </div>
+  <div class="prose"><p>2017 年，是一條反覆出現的分界線。把石虎的死亡通報，和全國遊蕩犬的推估數放在同一條時間軸上。</p></div>
+
+  <div class="scrolly" data-scrolly="trend">
+    <div class="graphic">
+      <div class="chart">
+        <div class="stage-title"><b>遊蕩犬推估數 × 石虎死亡通報</b><span>2018 – 2024</span></div>
+        <svg id="trendSvg" viewBox="0 0 640 470" role="img" aria-label="上方折線為全國遊蕩犬推估數，下方長條為石虎路殺與犬殺通報"></svg>
+        <div class="stage-note">上圖縱軸自 12 萬起算。石虎路殺數為集集特生中心彙整的全台通報，2019 年後通報制度較完整，不宜與更早年份比較；2023 年後未查得全台總數。</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step" data-step="0"><p>農業部的全國遊蕩犬調查，從 2018 年的 <b class="mono">146,773</b> 隻，一路漲到 2022 年的 <b class="mono">159,697</b> 隻。</p></div>
+      <div class="step" data-step="1"><p>同一段時間，石虎每年被通報路殺 17 到 31 隻。2022 年還有 <b class="hl">4 隻確認死於犬殺</b>。</p></div>
+      <div class="step" data-step="2"><p>遊蕩犬數量在 2022 年到頂，石虎路殺也在 2019、2022 年兩度達到 31 隻的紀錄。</p><p>這兩條線不能證明誰造成誰，但林務單位分析全台 183 個長期監測樣點，<b class="hl">77.6% 拍到了狗，而且 2017 年後顯著上升</b>；石虎的分布範圍，和狗百分之百重疊。</p></div>
+      <div class="step" data-step="3"><p>2024 年，遊蕩犬第一次下降到 <b class="mono">141,584</b> 隻。不過農業部說，降幅還沒有達到統計上的顯著。</p><p>那麼，2018 到 2022 年，狗為什麼變多？</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 三、為什麼變多 ===== -->
+<section class="chapter wrap" id="why">
+  <div class="chapter-head">
+    <div class="kicker">第三章｜原因</div>
+    <h2>狗為什麼變多</h2>
+  </div>
+  <div class="prose"><p>目前沒有一份研究能把遊蕩犬增加的原因一次說清楚。下面是政府統計、動保團體的長期資料和學術調查各自指向的因素，強度不一，我們一一標出來源類型。</p></div>
+
+  <div class="scrolly" data-scrolly="why">
+    <div class="graphic">
+      <div class="why">
+        <div class="chart">
+          <svg id="whySvg" viewBox="0 0 640 250" role="img" aria-label="2016 到 2024 年遊蕩犬推估數折線，標出 2017 年零撲殺"></svg>
+        </div>
+        <div class="cause" id="cause" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step" data-step="0"><span class="tag">官方統計</span><p>2017 年零撲殺上路。收容所不再因為「期滿」而安樂死動物，原本最大的出口關上了。</p><p>修法緩衝期間，收容所也開始控管入所量，2016 年的收容數比 2015 年少了 19%。</p></div>
+      <div class="step" data-step="1"><span class="tag">動保團體資料</span><p>街上的狗從哪裡來？相信動物協會分析北北基 2,705 隻遊蕩母犬：<b class="hl">近一半是在街頭出生的</b>，三分之一是有主人但放養在外的狗，真正被棄養或走失的只有一成多。</p></div>
+      <div class="step" data-step="2"><span class="tag">地方政府</span><p>苗栗縣 2025 年推估有 7,403 隻遊蕩犬，是 2021 年的 2.5 倍。縣府動防所認為，最大原因是熱區<b class="hl">長期餵食卻沒有絕育</b>，讓狗群聚、繁殖。</p></div>
+      <div class="step" data-step="3"><span class="tag">官方統計｜學術研究</span><p>要讓一個區域的狗自然減少，絕育率通常要拉到八成以上。家犬的絕育率到 2025 年是 71.75%。</p><p>高雄壽山的研究算過：即使維持 85% 絕育率，也要 17 年族群才會消失；只要每年有 50 隻新狗移入，就會失敗。</p></div>
+      <div class="step" data-step="4"><span class="tag">官方統計｜地方政府</span><p>罰則存在，但很少落實。未絕育的檢舉 2,926 件，裁罰 307 件，約一成。苗栗三年來棄養只開罰 10 件。</p></div>
+      <div class="step" data-step="5"><span class="tag">官方統計</span><p>還有一個常被忽略的因素：<b class="hl">收容所根本裝不下</b>。</p><p>全國公立收容所能留容的狗，加起來只有 9,481 隻，是街上遊蕩犬的十五分之一。</p><p><a class="more" href="https://claude.ai/artifact/FuuEAEbnMhuvaUeMumda8W" target="_blank" rel="noopener">看完整歸因動畫 →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 四、收容所 ===== -->
+<section class="chapter wrap" id="shelter">
+  <div class="chapter-head">
+    <div class="kicker">第四章｜收容</div>
+    <h2>籠子沒有變多</h2>
+  </div>
+  <div class="prose"><p>零撲殺拿掉了收容所的出口，籠舍卻沒有跟著增加。狗待得越來越久，一格一格被填滿。</p></div>
+
+  <div class="scrolly" data-scrolly="shelter">
+    <div class="graphic">
+      <div class="counter">
+        <div class="big mono" id="shBig">12</div>
+        <div class="unit" id="shUnit">夜</div>
+        <div class="cap" id="shCap">修法前的公告期限</div>
+        <div class="cage" id="cage" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step" data-step="0"><p>2015 年修法前，進入公立收容所的狗只有<b>十二天</b>。公告期一過、無人認領，就可能被安樂死。</p></div>
+      <div class="step" data-step="1"><p>2015 年，全國政府收容所收容了 <b class="mono">79,251</b> 隻動物。</p></div>
+      <div class="step" data-step="2"><p>落日條款期間，收容所開始控管入所。2016 年降到 <b class="mono">64,276</b> 隻，少了 19%。</p></div>
+      <div class="step" data-step="3"><p>2017 年起，期滿撲殺的天數歸零。</p></div>
+      <div class="step" data-step="4"><p>全國收容所的犬隻可留容上限是 <b class="mono">9,481</b> 隻。2026 年 1 月底，已經用掉 <b class="hl">76%</b>，有三個縣超過 100%。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="bandTitle">
+  <div class="inner">
+    <div class="kicker">零撲殺的代價</div>
+    <h2 id="bandTitle">代價是<em>滯留</em></h2>
+    <div class="huge">1,000<small>天以上</small></div>
+    <p>停止撲殺後，有的犬貓在收容所一住就是上千天。領養率在 2017 年後下滑，有的收容所一籠關好幾隻狗、天天打架，有的縣市被迫把狗送進管理不佳的私人狗園。</p>
+    <p>2017 年 5 月，桃園新屋收容所獸醫師簡稚澄離世，讓社會第一次正視第一線人員背負的重量。</p>
+  </div>
+</section>
+
+<section class="chapter wrap" id="occupancy">
+  <div class="chapter-head">
+    <div class="kicker">2026 年 1 月底</div>
+    <h2>三個縣的狗籠，已經超收</h2>
+  </div>
+  <div class="prose"><p>各縣市公立收容所的犬隻在養數，佔可留容上限的比例。全國平均 76%，雲林、彰化、南投超過 100%，台南、澎湖、桃園也逼近滿載。</p></div>
+  <div class="occ" id="occ" role="img" aria-label="各縣市收容所犬隻在養占可留容比例長條圖"></div>
+  <p class="chart-note">資料：農業部〈115 年 1 月全國公立動物收容所收容處理情形統計表〉。可留容上限多以大型犬體型估算，各地欄舍可彈性調整。當月全國入所 4,093 隻，其中 1,629 隻是「絕育後回置」計畫的短暫入所。</p>
+</section>
+
+<!-- ===== 五、政策 ===== -->
+<section class="chapter wrap" id="policy">
+  <div class="chapter-head">
+    <div class="kicker">第五章｜政策</div>
+    <h2>政策走在前面，配套跟在後面</h2>
+  </div>
+  <div class="prose"><p>二十多年來，台灣處理流浪動物大致走過三個階段：捕捉後安樂死、以絕育取代撲殺、再到今天的「源頭減量」。每一次轉向都由社會壓力推動，而配套往往晚了好幾年。</p></div>
+  <ol class="timeline">
+    <li><time>1998</time><h3>《動物保護法》公布</h3><p>收容動物公告期滿無人認領，即可人道處理。</p></li>
+    <li><time>2013</time><h3>紀錄片《十二夜》上映</h3><p>片名來自收容所的十二天公告期，許多人第一次看見收容所內部。</p></li>
+    <li class="key"><time>2015.02.04</time><h3>動保法修正，刪除期滿撲殺</h3><p>設兩年落日條款，讓收容所準備。</p></li>
+    <li class="key"><time>2017.02</time><h3>零撲殺上路</h3><p>出口關上了，但收容空間、絕育量能與飼主管理沒有同步到位。</p><p class="gap">落差：2018–2022 年遊蕩犬推估數連漲三次</p></li>
+    <li><time>2017.05</time><h3>收容所獸醫師簡稚澄離世</h3><p>第一線人員的負荷成為公共議題。</p></li>
+    <li><time>2018–2025</time><h3>野生動物遭犬攻擊大增</h3><p>急救站的犬攻擊救傷，8 年 284 隻，是前 25 年的兩倍。「野保與動保」的衝突浮上檯面。</p></li>
+    <li class="key"><time>2022.12</time><h3>農委會召開遊蕩犬管理策略會議</h3><p>零撲殺上路近六年後，中央正式檢討遊蕩犬管理策略。</p></li>
+    <li class="key"><time>2025</time><h3>以熱區為核心的全區域高強度絕育</h3><p>農業部要求地方鎖定熱區，短時間內把絕育率拉高。</p></li>
+    <li><time>2025.01.01</time><h3>貓納入寵物登記</h3><p>家貓須登記並植入晶片，2026 年起開罰。</p></li>
+  </ol>
+</section>
+
+<!-- ===== 六、我們的愛心 ===== -->
+<section class="chapter wrap" id="love">
+  <div class="chapter-head" style="text-align:center">
+    <div class="kicker">第六章｜我們</div>
+  </div>
+  <p class="q">我們的愛心，<br>是不是<em>害死了石虎</em>？</p>
+  <div class="prose">
+    <p>餵狗的人多半出於善意。但一碗沒有配套的飼料，會讓狗活得更久、生得更多，聚成狗群。當這群狗住在淺山，石虎、穿山甲、山羌就在牠們的活動範圍裡。</p>
+  </div>
+  <div class="evid">
+    <div><b>47.5%</b><span>北北基遊蕩母犬中，在街頭出生的比例</span></div>
+    <div><b>2.5×</b><span>苗栗遊蕩犬四年間的增幅，主因是熱區餵食</span></div>
+    <div><b>−92.6%</b><span>高雄壽山山羌出現指數的跌幅，遊蕩犬是主因</span></div>
+    <div><b>82.4%</b><span>路殺石虎感染犬貓小病毒的比例</span></div>
+  </div>
+  <div class="prose">
+    <p>這不代表不該愛牠們。2024 年遊蕩犬第一次減少，新北市在高強度絕育下七年少了 48% 的戶外犬，說明方法是存在的。差別在於，愛心有沒有跟著責任一起來。</p>
+  </div>
+  <div class="acts">
+    <div class="act"><h3>餵食就要絕育</h3><p>在餵的狗貓，請配合當地的絕育計畫。不在山區、保育區或石虎棲地餵食。</p></div>
+    <div class="act"><h3>家裡的狗不放養</h3><p>三分之一的遊蕩母犬是有主人的放養犬。牽繩、圈養、絕育。</p></div>
+    <div class="act"><h3>登記與晶片</h3><p>貓狗都要植入晶片並登記。走失時找得回來，棄養時追得到責任。</p></div>
+    <div class="act"><h3>不棄養</h3><p>無法繼續飼養時，透過送養平台或收容所轉介，不把動物丟在路邊或山上。</p></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="prose">
+    <h2>資料來源</h2>
+    <ol>
+      <li>石虎追蹤 55 隻、死亡 33 隻、犬殺 14 隻：農業部生物多樣性研究所，轉引自<a href="https://udn.com/news/story/7470/9550978" target="_blank" rel="noopener">聯合新聞網</a>。</li>
+      <li>野生動物遭犬貓攻擊 1993–2025 救傷資料（犬 425 隻、穿山甲 228、山羌 51、白鼻心 25；2017 前 141、2018 後 284）：生多所〈從野生動物急救站救傷資料分析看野生動物遭犬貓攻擊之趨勢變化〉，轉引自<a href="https://www.e-info.org.tw/node/243369" target="_blank" rel="noopener">環境資訊中心</a>、<a href="https://udn.com/news/story/7470/9468049" target="_blank" rel="noopener">聯合新聞網</a>。</li>
+      <li>石虎路殺 2019–2022、犬殺 2022：集集特生中心，轉引自<a href="https://www.cna.com.tw/news/ahel/202201040163.aspx" target="_blank" rel="noopener">中央社</a>、<a href="https://www.chinatimes.com/realtimenews/20230111004430-260405" target="_blank" rel="noopener">中時新聞網</a>、<a href="https://news.pts.org.tw/article/618618" target="_blank" rel="noopener">公視</a>。</li>
+      <li>183 個監測樣點、壽山山羌與絕育模型、石虎小病毒：《報導者》，<a href="https://www.twreporter.org/a/6-years-after-no-kill-policy-adopted-conflict-with-wildlife" target="_blank" rel="noopener">零撲殺六年後：與野生動物的衝突</a>。</li>
+      <li>全國遊蕩犬調查 2018–2024：農業部，轉引自<a href="https://news.pts.org.tw/article/734485" target="_blank" rel="noopener">公視新聞網</a>。</li>
+      <li>遊蕩母犬來源 2,705 隻：相信動物協會，轉引自<a href="https://www.nownews.com/news/5045663" target="_blank" rel="noopener">NOWnews</a>；苗栗 7,403 隻與棄養開罰：<a href="https://udn.com/news/story/7324/9594166" target="_blank" rel="noopener">聯合新聞網</a>。</li>
+      <li>家犬絕育率、未絕育檢舉與裁罰：農業部，轉引自<a href="https://www.ctee.com.tw/news/20260420700882-431401" target="_blank" rel="noopener">工商時報</a>、<a href="https://www.ctee.com.tw/news/20240808701260-431401" target="_blank" rel="noopener">工商時報</a>。</li>
+      <li>收容數 2015–2016：<a href="https://www.moa.gov.tw/ws.php?id=2506288" target="_blank" rel="noopener">農業部</a>；收容所可留容與在養數：<a href="https://animal.moa.gov.tw/public/upload/Know_ListFile/260213044130592095FZB2C.pdf" target="_blank" rel="noopener">115 年 1 月全國公立動物收容所收容處理情形統計表</a>；滯留與狗園：<a href="https://www.twreporter.org/topics/6-years-after-no-kill-policy-adopted" target="_blank" rel="noopener">《報導者》</a>、<a href="https://news.tvbs.com.tw/life/3226534" target="_blank" rel="noopener">TVBS</a>。</li>
+      <li>新北市戶外犬七年減少 48%：相信動物協會，轉引自<a href="https://udn.com/news/story/7470/9547774" target="_blank" rel="noopener">聯合新聞網</a>。</li>
+    </ol>
+    <p style="margin-top:16px">本文為示範性質的數位長文。多數數字來自媒體轉述的官方或研究資料，引用前請以原始報告為準。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const $ = id => document.getElementById(id);
+
+  /* 閱讀進度 */
+  addEventListener('scroll',()=>{
+    const h = document.documentElement.scrollHeight - innerHeight;
+    $('progress').style.width = (h>0 ? scrollY/h*100 : 0) + '%';
+  },{passive:true});
+
+  /* 開場點 */
+  const hd = $('heroDots');
+  for(let i=0;i<55;i++){const e=document.createElement('i'); if(i>=22&&i<41) e.className='d'; if(i>=41) e.className='k'; hd.appendChild(e);}
+
+  function fitCanvas(c){
+    const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio||1,2);
+    c.width = Math.max(1,Math.round(r.width*d)); c.height = Math.max(1,Math.round(r.height*d));
+    const ctx = c.getContext('2d'); ctx.setTransform(d,0,0,d,0,0);
+    return {ctx,w:r.width,h:r.height};
+  }
+
+  /* ================= 點陣舞台：石虎 → 野生動物 ================= */
+  const range = (a,n)=>Array.from({length:n},(_,i)=>a+i);
+  const CAT_DOG = range(0,14), CAT_OTHER = range(14,19), CAT_ALIVE = range(33,22);
+  const W0 = 55; // 野生動物從 55 開始
+  const WILD = range(W0,425);
+  const PANG = range(W0,228), MUNT = range(W0+228,51), CIVET = range(W0+279,25), OTHERS = range(W0+304,121);
+  const PRE = range(W0,141), POST = range(W0+141,284);
+  const WILD_STATES = [
+    {title:'生多所追蹤的石虎',src:'2019 – 2026.04',note:'每一個點是一隻被追蹤的石虎。',maxS:40,groups:[
+      {ids:[...CAT_DOG,...CAT_OTHER,...CAT_ALIVE],c:'--lamp',label:'追蹤中的石虎',sub:'55 隻'}]},
+    {title:'生多所追蹤的石虎',src:'2019 – 2026.04',note:'每一個點是一隻被追蹤的石虎。',maxS:36,groups:[
+      {ids:CAT_ALIVE,c:'--lamp',label:'存活',sub:'22 隻'},
+      {ids:[...CAT_DOG,...CAT_OTHER],c:'--ghost',label:'死亡',sub:'33 隻'}]},
+    {title:'生多所追蹤的石虎',src:'2019 – 2026.04',note:'每一個點是一隻被追蹤的石虎。',maxS:34,groups:[
+      {ids:CAT_ALIVE,c:'--lamp',label:'存活',sub:'22 隻'},
+      {ids:CAT_OTHER,c:'--ghost',label:'其他死因',sub:'19 隻'},
+      {ids:CAT_DOG,c:'--loss',label:'犬隻攻擊',sub:'14 隻・佔死亡 42%'}]},
+    {title:'遭犬攻擊而送救傷的野生動物',src:'1993 – 2025',note:'右側每一點是一筆野生動物急救站的犬攻擊救傷紀錄；左側為石虎追蹤中的犬殺個體，兩者為不同資料。',maxS:14,groups:[
+      {ids:CAT_DOG,c:'--loss',label:'石虎犬殺',sub:'14 隻'},
+      {ids:WILD,c:'--loss',label:'野生動物遭犬攻擊',sub:'425 隻'}]},
+    {title:'遭犬攻擊的野生動物，依物種',src:'1993 – 2025',note:'生多所野生動物急救站救傷紀錄。未含送醫前死亡與未通報案例。',maxS:16,groups:[
+      {ids:PANG,c:'--loss',label:'穿山甲',sub:'228 隻・54%'},
+      {ids:MUNT,c:'--loss',label:'山羌',sub:'51 隻'},
+      {ids:CIVET,c:'--loss',label:'白鼻心',sub:'25 隻'},
+      {ids:OTHERS,c:'--other',label:'其他物種',sub:'121 隻'}]},
+    {title:'遭犬攻擊的野生動物，依時間',src:'1993 – 2025',note:'2017 年為零撲殺上路之年。',maxS:16,groups:[
+      {ids:PRE,c:'--ghost',label:'1993–2017（25 年）',sub:'141 隻・每年 5.6'},
+      {ids:POST,c:'--loss',label:'2018–2025（8 年）',sub:'284 隻・每年 35.5'}]}
+  ];
+
+  function DotStage(canvas, total){
+    const dots = Array.from({length:total},()=>({x:0,y:0,r:0,a:0,tx:0,ty:0,tr:0,ta:0,c:'--lamp'}));
+    let labels=[], raf=null, W=0, H=0, cur=null;
+    function layout(counts, maxS){
+      const gapX=26, labelH=46, gapY=14, minSlot=96;
+      for(let s=maxS; s>=3; s-=0.5){
+        const bl = counts.map(n=>{const c=Math.max(1,Math.ceil(Math.sqrt(n*1.5))); const r=Math.ceil(n/c); return {c,w:c*s,h:r*s,slot:Math.max(c*s,minSlot)};});
+        const rows=[]; let row=[], rw=0;
+        bl.forEach(b=>{const add=(row.length?gapX:0)+b.slot; if(row.length && rw+add>W){rows.push(row);row=[];rw=0;} rw+=(row.length?gapX:0)+b.slot; row.push(b);});
+        if(row.length) rows.push(row);
+        const rowsH = rows.map(r=>Math.max(...r.map(b=>b.h))+labelH);
+        const totalH = rowsH.reduce((a,b)=>a+b,0)+gapY*(rows.length-1);
+        const maxW = Math.max(...rows.map(r=>r.reduce((a,b,i)=>a+b.slot+(i?gapX:0),0)));
+        if(totalH<=H && maxW<=W){
+          let y=(H-totalH)/2;
+          rows.forEach((r,ri)=>{
+            const rwid=r.reduce((a,b,i)=>a+b.slot+(i?gapX:0),0); let x=(W-rwid)/2;
+            const rh=Math.max(...r.map(b=>b.h));
+            r.forEach(b=>{b.x=x; b.y=y+(rh-b.h); b.ly=y+rh; x+=b.slot+gapX;});
+            y+=rowsH[ri]+gapY;
+          });
+          return {s,blocks:bl};
+        }
+      }
+      return null;
+    }
+    function apply(state){
+      cur=state; if(!W) return;
+      const L = layout(state.groups.map(g=>g.ids.length), state.maxS); if(!L) return;
+      const vis = new Set(); labels=[];
+      state.groups.forEach((g,gi)=>{
+        const b=L.blocks[gi];
+        g.ids.forEach((id,k)=>{
+          const d=dots[id];
+          d.tx=b.x+(k%b.c+0.5)*L.s; d.ty=b.y+(Math.floor(k/b.c)+0.5)*L.s; d.tr=L.s*0.38; d.ta=1; d.c=g.c; vis.add(id);
+          if(d.a<0.02){d.x=d.tx; d.y=d.ty+ (reduce?0:12); d.r=d.tr;}
+        });
+        labels.push({x:b.x,y:b.ly,label:g.label,sub:g.sub,c:g.c});
+      });
+      dots.forEach((d,i)=>{if(!vis.has(i)) d.ta=0;});
+      kick();
+    }
+    function frame(){
+      const ctx=canvas.getContext('2d'); ctx.clearRect(0,0,W,H);
+      let moving=false; const k=reduce?1:0.11;
+      const col={}; ['--lamp','--ghost','--loss','--other','--ink','--muted'].forEach(n=>col[n]=css(n));
+      for(const d of dots){
+        d.x+=(d.tx-d.x)*k; d.y+=(d.ty-d.y)*k; d.r+=(d.tr-d.r)*k; d.a+=(d.ta-d.a)*k;
+        if(Math.abs(d.tx-d.x)>.3||Math.abs(d.ty-d.y)>.3||Math.abs(d.ta-d.a)>.01||Math.abs(d.tr-d.r)>.05) moving=true;
+        if(d.a<0.01) continue;
+        ctx.globalAlpha=d.a; ctx.fillStyle=col[d.c]; ctx.beginPath(); ctx.arc(d.x,d.y,Math.max(.8,d.r),0,Math.PI*2); ctx.fill();
+      }
+      ctx.globalAlpha=1;
+      const fb=css('--font-body');
+      labels.forEach(l=>{
+        ctx.fillStyle=col['--ink']; ctx.font=`700 14px ${fb}`; ctx.fillText(l.label,l.x,l.y+18);
+        ctx.fillStyle=l.c==='--loss'?col['--loss']:col['--muted']; ctx.font=`500 13px ${fb}`; ctx.fillText(l.sub,l.x,l.y+36);
+      });
+      raf = moving ? requestAnimationFrame(frame) : null;
+    }
+    function kick(){ if(!raf) raf=requestAnimationFrame(frame); }
+    function resize(){ const f=fitCanvas(canvas); W=f.w; H=f.h; if(cur){ dots.forEach(d=>{d.a=0;}); apply(cur);} }
+    return {apply,resize,kick};
+  }
+
+  const wildStage = DotStage($('wildCanvas'), W0+425);
+  function setWild(i){
+    const s=WILD_STATES[i]; $('wildTitle').textContent=s.title; $('wildSrc').textContent=s.src; $('wildNote').textContent=s.note;
+    wildStage.apply(s);
+  }
+
+  /* ================= 折線：遊蕩犬 × 石虎 ================= */
+  const DOGS=[[2018,146773],[2020,155869],[2022,159697],[2024,141584]];
+  const NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs,text){const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); if(text!=null) e.textContent=text; return e;}
+  function buildTrend(){
+    const svg=$('trendSvg'); svg.innerHTML='';
+    const L=70,R=610, x=y=>L+(y-2018)/6*(R-L);
+    const yT=v=>40+(170000-v)/50000*170; // 120k–170k → 210..40
+    // 上：遊蕩犬
+    svg.appendChild(el('text',{x:L-62,y:24,class:'ax-l'},'遊蕩犬（隻）'));
+    [120000,140000,160000].forEach(v=>{svg.appendChild(el('line',{x1:L,x2:R,y1:yT(v),y2:yT(v),class:'ax'})); svg.appendChild(el('text',{x:L-8,y:yT(v)+5,class:'ax-t','text-anchor':'end'},(v/10000)+'萬'));});
+    svg.appendChild(el('rect',{x:x(2018.6),y:30,width:x(2022.4)-x(2018.6),height:410,class:'hlband'}));
+    const d=DOGS.map((p,i)=>(i?'L':'M')+x(p[0])+' '+yT(p[1])).join(' ');
+    svg.appendChild(el('path',{d,class:'ln',pathLength:1}));
+    DOGS.forEach(p=>{svg.appendChild(el('circle',{cx:x(p[0]),cy:yT(p[1]),r:6,class:'pt'})); svg.appendChild(el('text',{x:x(p[0]),y:yT(p[1])-14,class:'pt-t','text-anchor':'middle'},p[1].toLocaleString('en-US')));});
+    // 下：石虎
+    const base=430, yB=v=>base-v/35*150;
+    svg.appendChild(el('text',{x:L-62,y:262,class:'ax-l fade'},'石虎死亡通報（隻）'));
+    svg.appendChild(el('line',{x1:L,x2:R,y1:base,y2:base,class:'ax'}));
+    [[2019,31],[2020,17],[2021,25],[2022,31]].forEach(([yr,v])=>{
+      svg.appendChild(el('rect',{x:x(yr)-17,y:yB(v),width:34,height:base-yB(v),class:'br'}));
+      svg.appendChild(el('text',{x:x(yr),y:yB(v)-8,class:'br-t','text-anchor':'middle'},v));
+    });
+    svg.appendChild(el('rect',{x:x(2022)+19,y:yB(4),width:22,height:base-yB(4),class:'br k'}));
+    svg.appendChild(el('text',{x:x(2022)+30,y:yB(4)-8,class:'br-t k','text-anchor':'middle'},'4'));
+    svg.appendChild(el('text',{x:x(2023.5),y:base-20,class:'ax-l fade','text-anchor':'middle'},'未查得全台總數'));
+    const lg=el('g',{class:'fade'});
+    lg.appendChild(el('rect',{x:L,y:276,width:12,height:12,fill:css('--other')}));
+    lg.appendChild(el('text',{x:L+18,y:287,class:'ax-l'},'路殺'));
+    lg.appendChild(el('rect',{x:L+70,y:276,width:12,height:12,fill:css('--loss')}));
+    lg.appendChild(el('text',{x:L+88,y:287,class:'ax-l'},'犬殺'));
+    svg.appendChild(lg);
+    for(let yr=2018;yr<=2024;yr++) svg.appendChild(el('text',{x:x(yr),y:base+24,class:'ax-t','text-anchor':'middle'},yr));
+  }
+  function setTrend(i){
+    const svg=$('trendSvg');
+    svg.classList.toggle('show-top',true);
+    svg.classList.toggle('show-bottom',i>=1);
+    svg.classList.toggle('show-hl',i===2);
+  }
+
+  /* ================= 為什麼變多 ================= */
+  function buildWhy(){
+    const svg=$('whySvg'); svg.innerHTML='';
+    const L=70,R=610,x=y=>L+(y-2016)/8*(R-L), yT=v=>30+(170000-v)/50000*170;
+    [120000,140000,160000].forEach(v=>{svg.appendChild(el('line',{x1:L,x2:R,y1:yT(v),y2:yT(v),class:'ax'})); svg.appendChild(el('text',{x:L-8,y:yT(v)+5,class:'ax-t','text-anchor':'end'},(v/10000)+'萬'));});
+    for(let yr=2016;yr<=2024;yr+=2) svg.appendChild(el('text',{x:x(yr),y:236,class:'ax-t','text-anchor':'middle'},yr));
+    svg.appendChild(el('line',{x1:x(2017),x2:x(2017),y1:20,y2:210,class:'mark'}));
+    svg.appendChild(el('text',{x:x(2017)+8,y:34,class:'mark-t'},'2017 零撲殺'));
+    svg.appendChild(el('path',{d:DOGS.map((p,i)=>(i?'L':'M')+x(p[0])+' '+yT(p[1])).join(' '),class:'ln',pathLength:1}));
+    DOGS.forEach(p=>{svg.appendChild(el('circle',{cx:x(p[0]),cy:yT(p[1]),r:5,class:'pt'})); svg.appendChild(el('text',{x:x(p[0]),y:yT(p[1])-12,class:'pt-t','text-anchor':'middle'},(p[1]/10000).toFixed(1)+'萬'));});
+    svg.classList.add('show-top','show-mark');
+  }
+  const hb=(rows)=>rows.map(r=>`<div>${r[0]}</div><div class="tr"><div class="fl ${r[3]||''}" style="width:${r[1]}%"></div>${r[4]!=null?`<div class="th" style="left:${r[4]}%"></div>`:''}</div><div class="val">${r[2]}</div>`).join('');
+  const CAUSES=[
+    {t:'出口關上：零撲殺',s:'政府收容動物數',h:`<div class="hb">${hb([['2015 年',100,'79,251'],['2016 年',81,'64,276','l']])}</div>`,c:'來源：農業部'},
+    {t:'近一半是街頭出生',s:'北北基 2,705 隻遊蕩母犬的來源（2016–2017）',h:`<div class="stack"><span style="width:47.5%;background:var(--loss)">47.5%</span><span style="width:33.1%;background:var(--lamp)">33.1%</span><span style="width:12.8%;background:var(--other)">12.8%</span><span style="width:6.6%;background:var(--ghost)"></span></div><div class="stack-legend"><span><i style="background:var(--loss)"></i>街頭出生</span><span><i style="background:var(--lamp)"></i>放養家犬</span><span><i style="background:var(--other)"></i>棄養或走失</span><span><i style="background:var(--ghost)"></i>其他</span></div>`,c:'來源：相信動物協會'},
+    {t:'餵食熱點：苗栗四年 2.5 倍',s:'苗栗縣遊蕩犬推估數',h:`<div class="hb">${hb([['2021 年',40,'約 2,960'],['2025 年',100,'7,403','k']])}</div>`,c:'來源：苗栗縣動物防疫所。2021 年數字由「2.5 倍」換算。'},
+    {t:'絕育覆蓋不到門檻',s:'家犬絕育率，紅線為區域控制常用的 80% 門檻',h:`<div class="hb">${hb([['2021 年',66.41,'66.41%','',80],['2025 年',71.75,'71.75%','l',80],['壽山遊蕩犬',85,'85%','',80]])}</div>`,c:'壽山即使達 85%，仍需 17 年族群才會消失。來源：農業部；清華大學顏士清壽山研究'},
+    {t:'罰則很少落實',s:'未絕育檢舉與實際裁罰',h:`<div class="hb">${hb([['檢舉',100,'2,926 件'],['裁罰',10.5,'307 件','k']])}</div>`,c:'來源：農業部統計，轉引自工商時報'},
+    {t:'收容所裝不下',s:'全國公立收容所犬隻可留容上限 vs 遊蕩犬推估數',h:`<div class="hb">${hb([['遊蕩犬',100,'141,584'],['犬籠上限',6.7,'9,481','k']])}</div>`,c:'來源：農業部遊蕩犬調查 2024；收容處理情形統計表 2026.01'}
+  ];
+  function setWhy(i){
+    const c=CAUSES[i], box=$('cause');
+    box.innerHTML=`<div class="ct">${c.t}</div><div class="cs">${c.s}</div>${c.h}<div class="cs">${c.c}</div>`;
+    box.classList.remove('enter'); void box.offsetWidth; box.classList.add('enter');
+  }
+
+  /* ================= 收容所 ================= */
+  const cage=$('cage'); for(let i=0;i<24;i++) cage.appendChild(document.createElement('span'));
+  const SH=[
+    {big:'12',unit:'夜',cap:'修法前的公告期限',cls:'',on:12,full:0},
+    {big:'79,251',unit:'隻',cap:'2015 年政府收容動物數',cls:'',on:20,full:0},
+    {big:'64,276',unit:'隻',cap:'2016 年政府收容動物數，少了 19%',cls:'lamp',on:16,full:0},
+    {big:'0',unit:'夜',cap:'2017 年起，不再因期滿而撲殺',cls:'lamp',on:16,full:0},
+    {big:'76%',unit:'已滿',cap:'全國犬隻可留容上限 9,481 隻的使用率（2026 年 1 月底）',cls:'warn',on:0,full:18}
+  ];
+  function setShelter(i){
+    const s=SH[i]; $('shBig').textContent=s.big; $('shUnit').textContent=s.unit; $('shCap').textContent=s.cap;
+    $('shBig').className='big mono '+s.cls;
+    [...cage.children].forEach((c,k)=>{c.className=k<s.full?'full':(k<s.on?'on':'')});
+  }
+
+  /* 縣市占用率 */
+  const OCC=[['雲林縣',134],['彰化縣',132],['南投縣',111],['桃園市',100],['臺南市',97],['澎湖縣',94],['臺北市',88],['臺東縣',86],['嘉義市',85],['金門縣',84],['基隆市',80],['屏東縣',79],['全國',76],['花蓮縣',73],['嘉義縣',70],['新竹縣',68],['高雄市',64],['宜蘭縣',61],['新竹市',56],['新北市',55],['苗栗縣',54],['臺中市',52],['連江縣',47]];
+  const MAXO=140;
+  $('occ').innerHTML=OCC.map(([n,v])=>`<div class="row ${v>100?'over':''} ${n==='全國'?'nat':''}"><span>${n}</span><div class="tr"><div class="fl" style="width:${v/MAXO*100}%"></div><div class="line100" style="left:${100/MAXO*100}%"></div></div><span class="v">${v}%</span></div>`).join('');
+
+  /* ================= 捲動觀察 ================= */
+  const handlers={wild:setWild,trend:setTrend,why:setWhy,shelter:setShelter};
+  document.querySelectorAll('[data-scrolly]').forEach(sc=>{
+    const key=sc.dataset.scrolly, steps=sc.querySelectorAll('.step');
+    const io=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(!e.isIntersecting) return;
+        steps.forEach(s=>s.classList.toggle('is-active',s===e.target));
+        handlers[key](+e.target.dataset.step);
+      });
+    },{rootMargin:'-45% 0px -45% 0px'});
+    steps.forEach(s=>io.observe(s));
+    steps[0].classList.add('is-active');
+  });
+
+  function boot(){
+    buildTrend(); buildWhy(); wildStage.resize(); setWild(0); setTrend(0); setWhy(0); setShelter(0);
+  }
+  boot();
+  let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>wildStage.resize(),150)});
+  const rerender=()=>{wildStage.kick(); buildTrend(); const a=document.querySelector('[data-scrolly="trend"] .step.is-active'); setTrend(a?+a.dataset.step:0);};
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',rerender);
+  new MutationObserver(rerender).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>wildStage.kick());
+})();
+</script>
